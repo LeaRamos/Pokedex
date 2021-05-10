@@ -1,3 +1,6 @@
+<?php
+require "database.sql";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="recursos/scss/custom.css" rel="stylesheet">
     <link rel="stylesheet" href="recursos/css/style.css">
+    <link rel="stylesheet" href="recursos/css/pokedex.css">
     <title>PoKedex</title>
 </head>
 

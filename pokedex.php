@@ -1,4 +1,6 @@
-
+<?php
+require "database.sql";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,11 +100,14 @@
 
     <div class=" contenedorPrincipal  container-fluid ps-5  mb-5 pb-5">
 
-
+      <?php
+      if (isset($_SESSION["usuario"])) { ?>
         <div class="d-grid gap-2 col-6 mx-auto mt-5 ">
           <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#crearPokemon">Agregar Pokemon <i class="fas fa-plus"></i></button>
         </div>
- 
+      <?php
+      }
+      ?>
 
       <div class="row  ">
 
@@ -116,13 +121,15 @@
               <img src="recursos/tiposImg/Tipo_fuego.gif" alt="">
               <img src="recursos/tiposImg/Tipo_agua.gif" alt="">
             </div>
-
-
+            <?php
+            if (isset($_SESSION["usuario"])) { ?>
               <div class="d-block">
                 <button type="button" class="btn btn-warning mt-4" mt-4 data-bs-toggle="modal"  data-bs-target="#modificarPokemon"><i class="fas fa-edit"></i></button>
                 <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i></button>
               </div>
-
+            <?php
+            }
+            ?>
           </div>
         </div>
 
@@ -137,12 +144,15 @@
               <img src="recursos/tiposImg/Tipo_fuego.gif" alt="">
               <img src="recursos/tiposImg/Tipo_agua.gif" alt="">
             </div>
-
+            <?php
+            if (isset($_SESSION["usuario"])) { ?>
               <div class="d-block">
                 <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
                 <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i></button>
               </div>
-
+            <?php
+            }
+            ?>
           </div>
         </div>
 
@@ -156,12 +166,15 @@
               <img src="recursos/tiposImg/Tipo_fuego.gif" alt="">
               <img src="recursos/tiposImg/Tipo_agua.gif" alt="">
             </div>
-
+            <?php
+            if (isset($_SESSION["usuario"])) { ?>
               <div class="d-block">
                 <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
                 <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i></button>
               </div>
-
+            <?php
+            }
+            ?>
           </div>
         </div>
 
@@ -175,12 +188,15 @@
               <img src="recursos/tiposImg/Tipo_fuego.gif" alt="">
               <img src="recursos/tiposImg/Tipo_agua.gif" alt="">
             </div>
-
+            <?php
+            if (isset($_SESSION["usuario"])) { ?>
               <div class="d-block">
                 <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
                 <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i></button>
               </div>
-
+            <?php
+            }
+            ?>
           </div>
         </div>
 
