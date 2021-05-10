@@ -1,0 +1,65 @@
+body{
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    background-color: rgb(254, 211, 34); 
+    
+}
+
+header{
+    background-color: rgb(254, 211, 34);  
+    max-width: 1440px;
+ 
+
+    overflow-x: hidden;
+}
+
+header nav{
+    height: 50px;
+    background-color: rgba(254, 211, 34);
+}
+
+
+.mb-4 {
+    margin-bottom: 1.8rem!important;
+}
+
+.navbar-collapse{
+    background-color: rgba(254, 211, 34); 
+    
+}
+
+ ul.navbar-nav:nth-child(3){
+    margin-right: 0 !important;
+}
+
+.navbar-collapse a{
+    margin-left: 10px;
+}
+
+a.link-navegador:hover{
+    border-bottom: 5px rgba(252, 27, 27, 0.89) solid;
+    transition: 1.5 ease;
+}
+
+
+.contenedor a{
+    background-color: rgba(252, 27, 27, 0.89);
+    width: 150px;
+    border: none;
+}
+
+.contenedor a:hover{
+    color: yellow;
+    transform: skew(180deg);
+}
+
+.pie{
+    height: 100px;
+    margin-top: auto;
+}
+
+.contenedor img{
+   max-width: 500px;
+    max-height: 500px;
+}
