@@ -17,22 +17,22 @@
                 <li class="nav-item me-sm-1 me-md-3"><a href="index.php" class="link-navegador nav-link text-dark fw-bolder">Inicio</a> </li>
                 <li class="nav-item me-sm-1 me-md-3"><a href="pokedex.php" class="link-navegador nav-link text-dark fw-bolder">Pokedex</a></li>
                 <li class="nav-item me-sm-1 me-md-3">
-                    <?php
-                    session_start();
-
-                    if (isset($_SESSION["usuario"])) {
-                        echo "<a class='nav-link dropdown-toggle link-navegador nav-link text-dark fw-bolder'  href='#' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>" . $_SESSION['usuario'] . "</a>
+                    <?php session_start();
+                    if (isset($_SESSION["nombre"])) {
+                        echo "<a class='nav-link dropdown-toggle link-navegador nav-link text-dark fw-bolder'  href='#' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-expanded='false'>" . $_SESSION['nombre'] . "</a>
                     <ul class='dropdown-menu bg-warning' aria-labelledby='navbarDropdown'>
                     <li><hr class='dropdown-divider'></li>
                     <li class='nav-item me-sm-1 me-md-3 '><a class='dropdown-item link-navegador nav-link text-dark fw-bolder' href='logout.php'>Logout</a></li>
                     </ul>";
                     } else {
+                        
                     ?>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Login
                         </button>
                     <?php
                     }
+
                     ?>
 
                     <!-- Modal -->

@@ -1,5 +1,5 @@
 <?php
-require "database.sql";
+require "conexion.php";
 ?>
 
 <!DOCTYPE html>
