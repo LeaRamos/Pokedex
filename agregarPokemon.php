@@ -10,7 +10,7 @@ $nombre = isset($_POST["nombrePokemon"]) ? $_POST["nombrePokemon"] : "";
 $tipo = isset($_POST["tipo"]) ? $_POST["tipo"] : "";
 $descripcion = isset($_POST["descripcion"]) ? $_POST["descripcion"] : "";
 
-$nuevoNombre= $nombre ;
+$nuevoNombre= ucfirst($nombre);
 $rutaParaGuardar= "recursos/imgPokemon/";
 $fijarArchivo = $rutaParaGuardar . $nuevoNombre;
 $tipoDeArchivo = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
@@ -28,7 +28,6 @@ if (move_uploaded_file($_FILES["file"]["tmp_name"], $fijarArchivo . "." . $tipoD
 
              $conexion->query($sql2);
 
-            echo "exitos";
 
        header("location:pokedex.php");
        exit(); 

@@ -114,15 +114,18 @@ require "mostrarPokemon.php";
 
       <div class="row  ">
         <?php
-         
+         /*recorre fila por fila para traer todos los datos de cada pokemon */
         while ($fila = mysqli_fetch_array($result)) {
 
+          /*buscamos coincidencia entre el nombre del pokemon y el nombre de la imagen */
           foreach ($ficheros1 as $img) {
             if($img == $fila['imagen'] ){
              $imgMostrar = $directorio . $img;
             }
         }
      
+
+        /*buscamos coincidencia entre el tipo de pokemon y el tipo de la imagen */
         foreach ($ficheros2 as $img2) {
 
             $extension= explode(".", $img2);
@@ -136,17 +139,18 @@ require "mostrarPokemon.php";
 
         ?>
         
-          <div class="col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">
-            <div class="col-7 p-0 ">
+          <!-- <div class="col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">-->
+          <a href="#" class="text-decoration-none text-dark col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">
+          <?php    ?>
+            <div class="col-6 p-0 ">
               <img src="<?php echo $imgMostrar?>" class="w-100" style="max-height: 155px;" alt="">
             </div>
-            <div class="col-5 p-2">
+            <div class="col-6 p-2">
               <h6 class="card-title mb-3"><?php echo $fila["id"] ?># <?php echo ($fila["nombre"]) ?></h6>
               <div class="d-block">
                 <img src="<?php echo $imgMostrar2?>" alt="">  
               </div>
               <?php
-             
               if (isset($_SESSION["usuario"])) { ?>
                 <div class="d-block">
                   <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
@@ -155,8 +159,8 @@ require "mostrarPokemon.php";
               <?php
               }
               ?>
-            </div>
-          </div>
+            </div></a>
+          <!--</div>-->
         <?php
         }
         ?>

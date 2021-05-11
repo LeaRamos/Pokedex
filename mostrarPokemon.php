@@ -14,3 +14,4 @@ $ficheros1  = scandir($directorio);
 $directorio2 = 'recursos/tiposImg/';
 $ficheros2  = scandir($directorio2);
 
+
