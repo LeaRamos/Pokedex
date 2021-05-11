@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require "database.sql";
+require "conexion.php";
 
 $usuario = isset($_POST["usuario"]) ? $_POST["usuario"] : "";
 $password = isset($_POST["password"]) ? $_POST["password"] : "";
