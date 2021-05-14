@@ -38,65 +38,31 @@ require "mostrarPokemon.php";
 
             <div class="collapse navbar-collapse w-100" id="ContentFilter">
 
-                <fom class="row w-100 p-1">
-                    <div class=" col-10 mb-2 ">
+                <fom class="row w-100 p-2">
+                    <div class="col-10 mb-2">
                         <input class="form-control me-2" type="search" placeholder="Buscar por nombre"
                                aria-label="Search">
                     </div>
-                    <div class=" col-2 mb-2 p-0">
+                    <div class="col-2 mb-2 p-0">
                         <button class="btn btn-danger col-6 m-0 p-0 w-100 h-100" type="submit">Buscar</button>
                     </div>
-                    <div class=" form-check m-0 col-4 ">
+                    <div class="form-check m-0 col-4 col-md-3 col-lg-2 col-xl-1">
                         <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox1" value="option1">
                         <label class="form-check-label" for="inlineCheckbox1">Fuego</label>
                     </div>
-                    <div class="form-check m-0 col-4 ">
+                    <div class="form-check m-0 col-4 col-md-3 col-lg-2 col-xl-1">
                         <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox2" value="option2">
                         <label class="form-check-label" for="inlineCheckbox2">Agua</label>
                     </div>
-                    <div class="form-check m-0 col-4">
+                    <div class="form-check m-0 col-4 col-md-3 col-lg-2 col-xl-1">
                         <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox3" value="option3">
                         <label class="form-check-label" for="inlineCheckbox3">hierba</label>
                     </div>
-                    <div class="form-check m-0 col-4">
+                    <div class="form-check m-0 col-5 col-md-3 col-lg-3 col-xl-2">
                         <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox4" value="option4">
                         <label class="form-check-label" for="inlineCheckbox4">electrico</label>
                     </div>
-                    <div class="form-check m-0 col-4">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox5" value="option5">
-                        <label class="form-check-label" for="inlineCheckbox5">fastasma</label>
-                    </div>
-                    <div class="form-check m-0 col-4 ">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox6" value="option6">
-                        <label class="form-check-label" for="inlineCheckbox6">psiquico</label>
-                    </div>
-                    <div class="form-check m-0 col-4">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox7" value="option7">
-                        <label class="form-check-label" for="inlineCheckbox7">volador</label>
-                    </div>
-                    <div class="form-check m-0 col-4">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox8" value="option8">
-                        <label class="form-check-label" for="inlineCheckbox8">dragon</label>
-                    </div>
-                    <div class="form-check m-0 col-4">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox9" value="option9">
-                        <label class="form-check-label" for="inlineCheckbox9">hielo</label>
-                    </div>
-                    <div class="form-check m-0 col-4">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox10"
-                               value="option10">
-                        <label class="form-check-label" for="inlineCheckbox10">normal</label>
-                    </div>
-                    <div class="form-check m-0 col-4">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox11"
-                               value="option11">
-                        <label class="form-check-label" for="inlineCheckbox11">Hielo</label>
-                    </div>
-                    <div class="form-check m-0 col-4">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox12"
-                               value="option12">
-                        <label class="form-check-label" for="inlineCheckbox12">veneno</label>
-                    </div>
+
                 </fom>
                 <div>
                 </div>
@@ -119,7 +85,7 @@ require "mostrarPokemon.php";
 
         ?>
 
-        <div class="row  ">
+        <div class="d-flex flex-row flex-wrap justify-content-center">
             <?php
             /*recorre fila por fila para traer todos los datos de cada pokemon */
             while ($fila = mysqli_fetch_array($result)) {
@@ -148,7 +114,7 @@ require "mostrarPokemon.php";
 
                 <!-- <div class="col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">-->
                 <div href="#"
-                     class="text-decoration-none bg-light border me-md-4 me-lg-4 me-xl-4 border-2 rounded text-dark col-12 col-sm-6 col-lg-4 row px-1 me-2 mt-3 align-content-center">
+                     class="text-decoration-none bg-light border me-md-4 me-lg-4 me-xl-4 border-2 rounded text-dark col-12 col-sm-6 col-md-5 col-lg-3 row px-1 me-2 mt-3 align-content-center">
                     <?php ?>
                     <div class="col-6 p-0 ">
                         <img src="<?php echo $imgMostrar ?>" class="w-100 border-end border-2"
@@ -157,15 +123,15 @@ require "mostrarPokemon.php";
                     <div class="col-6 p-2">
                         <h6 class="card-title mb-3"><?php echo $fila["id"] ?># <?php echo($fila["nombre"]) ?></h6>
                         <div class="d-block d-flex flex-column">
-                            <img class="col-3 mb-3" src="<?php echo $imgMostrar2 ?>" alt="">
+                            <img class="col-4 mb-3" src="<?php echo $imgMostrar2 ?>" alt="">
                             <?php
 
                             $id = $fila["id"];
                             if (isset($_SESSION["nombre"])) {
                                 if (isset($id))
-                                    echo "<a href='borrarPokemon.php?id=$id' class='bg-dark col-6 col-md-4 col-lg-4 col-xl-4 text-decoration-none text-light bg-dark rounded text-center'>Eliminar</a>";
+                                    echo "<a href='borrarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center'>Eliminar</a>";
 
-                                echo "<a href='editarPokemon.php?id=$id' class='bg-dark col-6 col-md-4 col-lg-4 col-xl-4 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
+                                echo "<a href='editarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
                             }
                             ?>
                         </div>
@@ -213,68 +179,16 @@ require "mostrarPokemon.php";
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="acero" value="acero">
-                        <label class="form-check-label" for="inlineCheckbox1">Acero</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="bicho" value="bicho">
-                        <label class="form-check-label" for="inlineCheckbox1">Bicho</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="dragon" value="dragon">
-                        <label class="form-check-label" for="inlineCheckbox1">Dragon</label>
+                        <input class="form-check-input" type="radio" name="tipo" id="acero" value="planta">
+                        <label class="form-check-label" for="inlineCheckbox1">Hierba</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="tipo" id="electrico" value="electrico">
                         <label class="form-check-label" for="inlineCheckbox1">Electrico</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="fantasma" value="fantasma">
-                        <label class="form-check-label" for="inlineCheckbox1">Fantasma</label>
-                    </div>
-                    <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="tipo" id="fuego" value="fuego">
                         <label class="form-check-label" for="inlineCheckbox1">Fuego</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="hada" value="hada">
-                        <label class="form-check-label" for="inlineCheckbox1">Hada</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="hielo" value="hielo">
-                        <label class="form-check-label" for="inlineCheckbox1">Hielo</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="lucha" value="lucha">
-                        <label class="form-check-label" for="inlineCheckbox1">Lucha</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="normal" value="normal">
-                        <label class="form-check-label" for="inlineCheckbox1">Normal</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="planta" value="planta">
-                        <label class="form-check-label" for="inlineCheckbox1">Planta</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="psiquico" value="psiquico">
-                        <label class="form-check-label" for="inlineCheckbox1">Psiquico</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="roca" value="roca">
-                        <label class="form-check-label" for="inlineCheckbox1">Roca</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="tierra" value="tierra">
-                        <label class="form-check-label" for="inlineCheckbox1">Tierra</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="veneno" value="veneno">
-                        <label class="form-check-label" for="inlineCheckbox1">Veneno</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="volador" value="volador">
-                        <label class="form-check-label" for="inlineCheckbox1">Volador</label>
                     </div>
 
                     <br>
