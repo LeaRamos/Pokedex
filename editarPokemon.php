@@ -90,57 +90,50 @@ require "mostrarPokemon.php";
             /*recorre fila por fila para traer todos los datos de cada pokemon */
             while ($fila = mysqli_fetch_array($result)) {
 
-                /*buscamos coincidencia entre el nombre del pokemon y el nombre de la imagen */
-                foreach ($ficheros1 as $img) {
-                    if ($img == $fila['imagen']) {
-                        $imgMostrar = $directorio . $img;
-                    }
+            /*buscamos coincidencia entre el nombre del pokemon y el nombre de la imagen */
+            foreach ($ficheros1 as $img) {
+                if ($img == $fila['imagen']) {
+                    $imgMostrar = $directorio . $img;
                 }
+            }
 
 
-                /*buscamos coincidencia entre el tipo de pokemon y el tipo de la imagen */
-                foreach ($ficheros2 as $img2) {
+            /*buscamos coincidencia entre el tipo de pokemon y el tipo de la imagen */
+            foreach ($ficheros2 as $img2) {
 
-                    $extension = explode(".", $img2);
-                    $nuevaExtension = substr($fila['tipo'], 0, -1);
-                    $tipoFinal = $nuevaExtension . "." . $extension[1];
+                $extension = explode(".", $img2);
+                $nuevaExtension = substr($fila['tipo'], 0, -1);
+                $tipoFinal = $nuevaExtension . "." . $extension[1];
 
-                    if ($img2 == $tipoFinal) {
-                        $imgMostrar2 = $directorio2 . $img2;
-                    }
+                if ($img2 == $tipoFinal) {
+                    $imgMostrar2 = $directorio2 . $img2;
                 }
+            }
 
-                ?>
+            ?>
 
+            <div href="#"
+                 class="text-decoration-none bg-light border me-md-4 me-lg-4 me-xl-4 border-2 rounded text-dark col-12 col-sm-6 col-md-5 col-lg-4 row px-1 me-2 mt-3 align-content-center">
 
+                <div class="col-5 p-0 ">
+                    <img src="<?php echo $imgMostrar ?>" class="w-100 border-end border-2"
+                         style="max-height: 155px;" alt="">
+                </div>
 
+                <div class="col-6 p-2 d-flex flex-column">
 
+                    <div class="d-flex flex-row">
 
-
-
-
-
-
-            
-
-
-
-
-
-
-                <!--
-                <div href="#"
-                     class="text-decoration-none bg-light border me-md-4 me-lg-4 me-xl-4 border-2 rounded text-dark col-12 col-sm-6 col-md-5 col-lg-4 row px-1 me-2 mt-3 align-content-center">
-
-                    <div class="col-5 p-0 ">
-                        <img src="<?php echo $imgMostrar ?>" class="w-100 border-end border-2"
-                             style="max-height: 155px;" alt="">
-                    </div>
-                    <div class="col-6 p-2 d-flex flex-row">
-                        <div>
                         <h6 class="card-title mb-3"><?php echo $fila["id"] ?># <?php echo($fila["nombre"]) ?></h6>
-                        <img class="col-2 mb-3" src="<?php echo $imgMostrar2 ?>" alt="">
-                        </div>
+                        <img class="col-3 ms-2 mb-3" src="<?php echo $imgMostrar2 ?>" alt="">
+
+                    </div>
+
+                    <div class="d-flex flex-column">
+
+                        <div>Que desea modificar?</div>
+
+                        <div class="d-flex flex-row flex-wrap">
 
                             <?php
 
@@ -149,35 +142,46 @@ require "mostrarPokemon.php";
 
                                 if (isset($id))
 
-                                    echo "<div class='d-flex'>";
+
                                     /* data-bs-target='#editarPokemon'*/
 
-                                    echo "<button data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-2 text-decoration-none text-light bg-dark rounded text-center '>Id</button>";
-                                echo "<button data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-2 text-decoration-none text-light bg-dark rounded text-center '>Nombre</button>";
-                                echo "<button data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-2 text-decoration-none text-light bg-dark rounded text-center '>Tipo</button>";
-                                echo "<button data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-2 text-decoration-none text-light bg-dark rounded text-center '>Descripción</button>";
-                                echo "<button data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-2 text-decoration-none text-light bg-dark rounded text-center '>Imágen</button>";
+                                    echo "<a data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-6 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Id</a>";
+                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-6 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Nombre</a>";
+                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-6 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Tipo</a>";
+                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-6 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Descripción</a>";
+                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionPokemon' class='bg-dark col-6 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Imágen</a>";
 
-                                echo "</div>";
+
                                 include "modalEdicion.php";
 
                                 /*echo "<a data-bs-toggle='modal' data-bs-target='#editarPokemon' href='editarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";*/
                             }
-                            /*echo "<a href='borrarPokemon.php?id=$id' class='bg-dark text-decoration-none px-1 text-light bg-dark rounded text-center'>Eliminar</a>";*/
+                            echo "<a href='borrarPokemon.php?id=$id' class='bg-dark text-decoration-none px-1 text-light bg-danger col-5 ms-1 mt-1 px-3 rounded text-center'>Eliminar</a>";
                             ?>
+
+                        </div>
+
+                        <div>
+
                         </div>
 
 
+                    </div>
+
+                </div>
+
+            </div>
+
                         <?php
-                        if (isset($_SESSION["usuario"])) { ?>
+            if (isset($_SESSION["usuario"])) { ?>
                             <div class="d-block">
                                 <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i>
                                 </button>
                             </div>
                             <?php
-                        }
-                        ?>
+            }
+            ?>
                     </div>
                 </div>
 
@@ -190,111 +194,84 @@ require "mostrarPokemon.php";
         -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-</div>
-
-<!-- Modal crear pokemon-->
-<div class="modal fade" id="crearPokemon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="agregarPokemon.php" method="POST" enctype="multipart/form-data">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Agregar un pokemon</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <input class="" name="numero" type="number" placeholder="Posicion de la Pokedex">
-                    <input class="" name="nombrePokemon" type="text" placeholder="Nombre Pokemon">
-
-                    <div class="mt-3 mb-1">¿Que tipo es?</div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="agua" value="agua">
-                        <label class="form-check-label" for="inlineCheckbox1">Agua</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="acero" value="planta">
-                        <label class="form-check-label" for="inlineCheckbox1">Hierba</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="electrico" value="electrico">
-                        <label class="form-check-label" for="inlineCheckbox1">Electrico</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="fuego" value="fuego">
-                        <label class="form-check-label" for="inlineCheckbox1">Fuego</label>
-                    </div>
-
-                    <br>
-                    <br>
-
-                    <div class="mb-3">
-                        <label for="validationTextarea" class="form-label">Cuentanos un poco del pokemon:</label>
-                        <textarea class="form-control " name="descripcion" id="descripcion"
-                                  placeholder="Required example textarea"></textarea>
-                        <div class="invalid-feedback">
-                            Descripcion
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="validationTextarea" class="form-label">Fotito para el Insta</label>
-                        <input type="file" name="file" class="form-control" aria-label="file example" required>
-                        <div class="invalid-feedback">Example invalid form file feedback</div>
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                    <button class="  fw-bolder btn btn-primary" type="submit" value="loguear">Agregar Pokemon
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
-</div>
-<!-- FIN Modal crear pokemon-->
 
-<footer class="bg-warning d-block" style="height: 100px;">
+    <!-- Modal crear pokemon-->
+    <div class="modal fade" id="crearPokemon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="agregarPokemon.php" method="POST" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar un pokemon</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-</footer>
+                        <input class="" name="numero" type="number" placeholder="Posicion de la Pokedex">
+                        <input class="" name="nombrePokemon" type="text" placeholder="Nombre Pokemon">
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
-</script>
+                        <div class="mt-3 mb-1">¿Que tipo es?</div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipo" id="agua" value="agua">
+                            <label class="form-check-label" for="inlineCheckbox1">Agua</label>
+                        </div>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipo" id="acero" value="planta">
+                            <label class="form-check-label" for="inlineCheckbox1">Hierba</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipo" id="electrico" value="electrico">
+                            <label class="form-check-label" for="inlineCheckbox1">Electrico</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="tipo" id="fuego" value="fuego">
+                            <label class="form-check-label" for="inlineCheckbox1">Fuego</label>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <div class="mb-3">
+                            <label for="validationTextarea" class="form-label">Cuentanos un poco del pokemon:</label>
+                            <textarea class="form-control " name="descripcion" id="descripcion"
+                                      placeholder="Required example textarea"></textarea>
+                            <div class="invalid-feedback">
+                                Descripcion
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="validationTextarea" class="form-label">Fotito para el Insta</label>
+                            <input type="file" name="file" class="form-control" aria-label="file example" required>
+                            <div class="invalid-feedback">Example invalid form file feedback</div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                        <button class="  fw-bolder btn btn-primary" type="submit" value="loguear">Agregar Pokemon
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- FIN Modal crear pokemon-->
+
+    <footer class="bg-warning d-block" style="height: 100px;">
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+            integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
