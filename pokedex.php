@@ -131,7 +131,11 @@ require "mostrarPokemon.php";
                                 if (isset($id))
                                     echo "<a href='borrarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center'>Eliminar</a>";
 
-                                echo "<a href='editarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
+                                /* data-bs-toggle='modal' data-bs-target='#editarPokemon'*/
+
+                                echo "<a href='editarPokemon.php?id=$id' data-bs-target='#editarPokemon' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
+
+                                /*echo "<a data-bs-toggle='modal' data-bs-target='#editarPokemon' href='editarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";*/
                             }
                             ?>
                         </div>
@@ -212,7 +216,7 @@ require "mostrarPokemon.php";
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cerrar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                     <button class="  fw-bolder btn btn-primary" type="submit" value="loguear">Agregar Pokemon
                     </button>
                 </div>
@@ -221,124 +225,6 @@ require "mostrarPokemon.php";
     </div>
 </div>
 <!-- FIN Modal crear pokemon-->
-
-<!-- Modal modificar pokemon-->
-<div class="modal fade" id="modificarPokemon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="login.php" method="POST" enctype="multipart/form-data">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modificar un pokemon</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <input class="" name="numero" type="numeber" placeholder="Posicion de la Pokedex">
-                    <input class="" name="nombrePokemon" type="text" placeholder="Nombre Pokemon">
-
-                    <div class="mt-3 mb-1">¿Que tipo es?</div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="agua" value="agua">
-                        <label class="form-check-label" for="inlineCheckbox1">Agua</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="acero" value="acero">
-                        <label class="form-check-label" for="inlineCheckbox1">Acero</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="bicho" value="bicho">
-                        <label class="form-check-label" for="inlineCheckbox1">Bicho</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="dragon" value="dragon">
-                        <label class="form-check-label" for="inlineCheckbox1">Dragon</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="electrico" value="electrico">
-                        <label class="form-check-label" for="inlineCheckbox1">Electrico</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="fantasma" value="fantasma">
-                        <label class="form-check-label" for="inlineCheckbox1">Fantasma</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="fuego" value="fuego">
-                        <label class="form-check-label" for="inlineCheckbox1">Fuego</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="hada" value="hada">
-                        <label class="form-check-label" for="inlineCheckbox1">Hada</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="hielo" value="hielo">
-                        <label class="form-check-label" for="inlineCheckbox1">Hielo</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="lucha" value="lucha">
-                        <label class="form-check-label" for="inlineCheckbox1">Lucha</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="normal" value="normal">
-                        <label class="form-check-label" for="inlineCheckbox1">Normal</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="planta" value="planta">
-                        <label class="form-check-label" for="inlineCheckbox1">Planta</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="psiquico" value="psiquico">
-                        <label class="form-check-label" for="inlineCheckbox1">Psiquico</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="roca" value="roca">
-                        <label class="form-check-label" for="inlineCheckbox1">Roca</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="tierra" value="tierra">
-                        <label class="form-check-label" for="inlineCheckbox1">Tierra</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="veneno" value="veneno">
-                        <label class="form-check-label" for="inlineCheckbox1">Veneno</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="volador" value="volador">
-                        <label class="form-check-label" for="inlineCheckbox1">Volador</label>
-                    </div>
-
-                    <br>
-                    <br>
-
-                    <div class="mb-3">
-                        <label for="validationTextarea" class="form-label">Cuentanos un poco del pokemon:</label>
-                        <textarea class="form-control " name="descripcion" id="descripcion"
-                                  placeholder="Required example textarea"></textarea>
-                        <div class="invalid-feedback">
-                            Descripcion
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="validationTextarea" class="form-label">Fotito para el Insta</label>
-                        <input type="file" class="form-control" aria-label="file example" required>
-                        <div class="invalid-feedback">Example invalid form file feedback</div>
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cerrar</button>
-                    <button class="  fw-bolder btn btn-primary" type="submit" value="loguear">Modificar Pokemon
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- FIN Modal modificar pokemon-->
 
 <footer class="bg-warning d-block" style="height: 100px;">
 
