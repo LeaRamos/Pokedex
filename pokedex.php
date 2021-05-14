@@ -161,9 +161,12 @@ require "mostrarPokemon.php";
                             <?php
 
                             $id = $fila["id"];
-                            if (isset($id))
-                                echo "<a href='borrarPokemon.php?id=$id' class='bg-dark col-4 text-decoration-none text-light bg-dark rounded text-center'>Eliminar</a>"
+                            if (isset($_SESSION["nombre"])) {
+                                if (isset($id))
+                                    echo "<a href='borrarPokemon.php?id=$id' class='bg-dark col-6 col-md-4 col-lg-4 col-xl-4 text-decoration-none text-light bg-dark rounded text-center'>Eliminar</a>";
 
+                                echo "<a href='editarPokemon.php?id=$id' class='bg-dark col-6 col-md-4 col-lg-4 col-xl-4 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
+                            }
                             ?>
                         </div>
                         <?php
