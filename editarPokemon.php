@@ -153,14 +153,15 @@ require "mostrarPokemon.php";
 
                                     /* data-bs-target='#editarPokemon'*/
 
-                                    echo "<a data-bs-toggle='modal' data-bs-target='#edicionId' class='bg-dark col-3 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Id</a>";
-                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionNombre' class='bg-dark ms-1 col-4 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Nombre</a>";
+
+                                    echo "<a data-bs-toggle='modal' data-bs-target='#edicionNombre' class='bg-dark ms-1 col-4 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Nombre</a>";
                                 echo "<a data-bs-toggle='modal' data-bs-target='#edicionTipo' class='bg-dark ms-1 col-3 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Tipo</a>";
-                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionDescripción' class='bg-dark col-3 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Desc</a>";
+                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionDescripción' class='bg-dark col-4 ms-1 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Desc</a>";
                                 echo "<a data-bs-toggle='modal' data-bs-target='#edicionImagen' class='bg-dark ms-1 col-4 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Imágen</a>";
                                 echo "<a href='borrarPokemon.php?id=$id' class='text-decoration-none px-1 text-light bg-danger ms-1 col-4 mt-1 rounded text-center'>Eliminar</a>";
 
                                 include "modalEdicion.php";
+
 
                                 /*echo "<a data-bs-toggle='modal' data-bs-target='#editarPokemon' href='editarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";*/
                             }
