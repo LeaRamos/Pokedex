@@ -18,8 +18,8 @@ require "mostrarPokemon.php";
 </head>
 
 <body class="container-fluid p-0  justify-content-lg-center bg-white">
-
-  <div class="contenedorPrincipalNav container-fluid min-vh-100 p-0 m-0 min-vw-100 bg-white d-block">
+    <!--elimine la clase "min-vh-100"  del div contenedor principal porqe me daba error en la caja de busqeda-->
+  <div class="contenedorPrincipalNav container-fluid  p-0 m-0 min-vw-100 bg-white d-block">
     <?php
     require "header.php";
     ?>
@@ -36,63 +36,65 @@ require "mostrarPokemon.php";
 
         <div class="collapse navbar-collapse w-100" id="ContentFilter">
 
-          <fom class="row w-100 p-1">
+          <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" class="row w-100 p-1" >
+
             <div class=" col-10 mb-2 ">
-              <input class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+              <input class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search" name="nombre">
             </div>
             <div class=" col-2 mb-2 p-0">
-              <button class="btn btn-danger col-6 m-0 p-0 w-100 h-100" type="submit">Buscar</button>
+              <button class="btn btn-danger col-6 m-0 p-0 w-100 h-100" type="submit" name="buscar">Buscar</button>
             </div>
             <div class=" form-check m-0 col-4 ">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox1" value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">Fuego</label>
+              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox1" value="fuego" name="tipo">
+              <label class="form-check-label" for="inlineCheckbox1" >Fuego</label>
             </div>
             <div class="form-check m-0 col-4 ">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox2" value="option2">
+              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox2" value="agua" name="tipo">
               <label class="form-check-label" for="inlineCheckbox2">Agua</label>
             </div>
             <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox3" value="option3">
+              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox3" value="hierba" name="tipo">
               <label class="form-check-label" for="inlineCheckbox3">hierba</label>
             </div>
-            <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox4" value="option4">
-              <label class="form-check-label" for="inlineCheckbox4">electrico</label>
+
             </div>
-            <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox5" value="option5">
-              <label class="form-check-label" for="inlineCheckbox5">fastasma</label>
-            </div>
-            <div class="form-check m-0 col-4 ">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox6" value="option6">
-              <label class="form-check-label" for="inlineCheckbox6">psiquico</label>
-            </div>
-            <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox7" value="option7">
-              <label class="form-check-label" for="inlineCheckbox7">volador</label>
-            </div>
-            <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox8" value="option8">
-              <label class="form-check-label" for="inlineCheckbox8">dragon</label>
-            </div>
-            <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox9" value="option9">
-              <label class="form-check-label" for="inlineCheckbox9">hielo</label>
-            </div>
-            <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox10" value="option10">
-              <label class="form-check-label" for="inlineCheckbox10">normal</label>
-            </div>
-            <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox11" value="option11">
-              <label class="form-check-label" for="inlineCheckbox11">Hielo</label>
-            </div>
-            <div class="form-check m-0 col-4">
-              <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox12" value="option12">
-              <label class="form-check-label" for="inlineCheckbox12">veneno</label>
-            </div>
-          </fom>
+          </form>
           <div>
+              <h1>aca tiene q ir el resultado de la busqeda
+              </h1>
+              <?php
+              require 'buscarPokemon.php';
+              if(isset($_POST['buscar'])){
+                  $nombre=$_POST['nombre'];
+                $sdsad=buscarPorNombre($nombre);
+
+                var_dump($sdsad[4]);
+
+              }
+
+
+              ?>
+
+
+
+              <a href="#" class="text-decoration-none text-dark col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">
+                  <?php    ?>
+                  <div class="col-6 p-0 ">
+                      <img src="<?php echo getImagen(buscarPorNombre($nombre)); ?>" class="w-100" style="max-height: 155px;" alt="">
+                  </div>
+                  <div class="col-6 p-2">
+                      <h6 class="card-title mb-3"><?php
+
+                          if($nombre !== null){
+                              echo getNombre(buscarPorNombre($nombre));
+                          }
+
+                          ?></h6>
+                      <div class="d-block">
+                         <!-- <img src="<?php echo $imgMostrar2?>" alt="">-->
+                      </div>
+
+                  </div></a>
           </div>
         </div>
       </div>
@@ -113,6 +115,7 @@ require "mostrarPokemon.php";
       ?>
 
       <div class="row  ">
+          <h1>hola</h1>
         <?php
          /*recorre fila por fila para traer todos los datos de cada pokemon */
         while ($fila = mysqli_fetch_array($result)) {
