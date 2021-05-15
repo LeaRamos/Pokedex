@@ -1,0 +1,17 @@
+body div.contenedorPrincipalNav {
+    background-color: rgb(240, 240, 240);
+}
+
+nav{
+    background-color: rgba(254, 211, 34);  
+
+}
+
+div.contenedor-nav, .contenedorPrincipal{
+    max-width: 1440px;
+    height: auto;
+}
+
+.contenedorPrincipal{
+    background-color: rgb((240, 240, 240);
+}
