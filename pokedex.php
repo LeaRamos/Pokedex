@@ -133,7 +133,7 @@ require "mostrarPokemon.php";
                             $imagen = $fila["imagen"];
                             if (isset($_SESSION["nombre"])) {
                                 if (isset($id))
-                                    echo "<a href='borrarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center'>Eliminar</a>";
+                                    echo "<a href='borrarPokemon.php?id=$id' class='bg-danger col-6 text-decoration-none text-light rounded text-center'>Eliminar</a>";
 
                                 /* data-bs-toggle='modal' data-bs-target='#editarPokemon'*/
 

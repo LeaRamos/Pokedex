@@ -71,14 +71,14 @@ require "conexion.php";
 <div class='modal fade' id='edicionDescripción' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
     <div class='modal-dialog'>
         <div class='modal-content'>
-            <form action='login.php' method='POST' enctype='multipart/form-data'>
+            <form action="modificarDatos.php" method="get">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Modificar Descripción</h5>
                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                 </div>
                 <div class='mb-3 mt-2 p-2'>
-                        <textarea class='form-control' name='descripcion' id='descripcion'
-                                  placeholder='Escriba nueva descripción'></textarea>
+                    <input class='' name='textId' type='hidden' value='<?php echo $fila["id"] ?>'>
+                    <textarea class='form-control' name='descripcion' id='descripcion' placeholder='Escriba nueva descripción'></textarea>
                     <div class='invalid-feedback'>
                         Descripcion
                     </div>
@@ -95,7 +95,7 @@ require "conexion.php";
 <div class='modal fade' id='edicionImagen' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
     <div class='modal-dialog'>
         <div class='modal-content'>
-            <form action='login.php' method='POST' enctype='multipart/form-data'>
+            <form action="modificarDatos.php" method="get">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Modificar Imágen</h5>
                     <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
@@ -104,7 +104,8 @@ require "conexion.php";
 
                     <div class='mb-3'>
                         <label for='validationTextarea' class='form-label'>Seleccione una nueva imágen</label>
-                        <input type='file' name='file' class='form-control' aria-label='file example' required>
+                        <input class='' name='textId' type='hidden' value='<?php echo $fila["id"] ?>'>
+                        <input type='file' name='file' class='form-control' aria-label='file example' value='<?php echo $fila["imagen"] ?>' required>
                         <div class='invalid-feedback'>Example invalid form file feedback</div>
                     </div>
 
