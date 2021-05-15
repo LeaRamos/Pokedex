@@ -127,13 +127,17 @@ require "mostrarPokemon.php";
                             <?php
 
                             $id = $fila["id"];
+                            $nombre = $fila["nombre"];
+                            $descripcion = $fila["descripcion"];
+                            $tipo = $fila["tipo"];
+                            $imagen = $fila["imagen"];
                             if (isset($_SESSION["nombre"])) {
                                 if (isset($id))
                                     echo "<a href='borrarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center'>Eliminar</a>";
 
                                 /* data-bs-toggle='modal' data-bs-target='#editarPokemon'*/
 
-                                echo "<a href='editarPokemon.php?id=$id' data-bs-target='#editarPokemon' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
+                                echo "<a href='editarPokemon.php?id=$id&nombre=$nombre&descripcion=$descripcion&tipo=$tipo&imagen=$imagen' data-bs-target='#editarPokemon' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
 
                                 /*echo "<a data-bs-toggle='modal' data-bs-target='#editarPokemon' href='editarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";*/
                             }
@@ -183,7 +187,7 @@ require "mostrarPokemon.php";
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="acero" value="planta">
+                        <input class="form-check-input" type="radio" name="tipo" id="hierba" value="planta">
                         <label class="form-check-label" for="inlineCheckbox1">Hierba</label>
                     </div>
                     <div class="form-check form-check-inline">
