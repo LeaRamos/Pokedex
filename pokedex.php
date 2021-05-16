@@ -18,11 +18,13 @@ require "mostrarPokemon.php";
 </head>
 
 <body class="container-fluid p-0  justify-content-lg-center bg-white">
-
+<!-- Inicio Contenedor Principal -->
 <div class="contenedorPrincipalNav container-fluid min-vh-100 p-0 m-0 min-vw-100 bg-white d-block">
     <?php
     require "header.php";
     ?>
+
+    <!-- Contenedor Buscador -->
 
     <div class="contenedorPrincipal  container-fluid d-flex flex-column justify-content-center navbar navbar-expand-sm">
 
@@ -38,40 +40,45 @@ require "mostrarPokemon.php";
 
             <div class="collapse navbar-collapse w-100" id="ContentFilter">
 
-                <fom class="row w-100 p-2">
+                <form action="pokedex.php" method="post" class="row w-100 p-2">
                     <div class="col-10 mb-2">
-                        <input class="form-control me-2" type="search" placeholder="Buscar por nombre"
+                        <input class="form-control me-2" name="busqueda" type="search"
+                               placeholder="Buscar por nombre, tipo o número de Pokemón."
                                aria-label="Search">
                     </div>
                     <div class="col-2 mb-2 p-0">
                         <button class="btn btn-danger col-6 m-0 p-0 w-100 h-100" type="submit">Buscar</button>
                     </div>
-                    <div class="form-check m-0 col-4 col-md-3 col-lg-2 col-xl-1">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox1" value="option1">
+
+                    <!--<div class="form-check m-0 col-4 col-md-3 col-lg-2 col-xl-1">
+                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox1" value="fuego">
                         <label class="form-check-label" for="inlineCheckbox1">Fuego</label>
                     </div>
                     <div class="form-check m-0 col-4 col-md-3 col-lg-2 col-xl-1">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox2" value="agua">
                         <label class="form-check-label" for="inlineCheckbox2">Agua</label>
                     </div>
                     <div class="form-check m-0 col-4 col-md-3 col-lg-2 col-xl-1">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox3" value="option3">
+                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox3" value="hierba">
                         <label class="form-check-label" for="inlineCheckbox3">hierba</label>
                     </div>
                     <div class="form-check m-0 col-5 col-md-3 col-lg-3 col-xl-2">
-                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox4" value="option4">
+                        <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox4"
+                               value="electrico">
                         <label class="form-check-label" for="inlineCheckbox4">electrico</label>
-                    </div>
+                    </div>-->
 
-                </fom>
+                </form>
                 <div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Final Contenedor buscar -->
 
-    <div class=" contenedorPrincipal  container-fluid ps-5  mb-5 pb-5">
+    <!-- Contenedor agregar pokemones y lista de pokemones) -->
+    <div class="contenedorPrincipal container-fluid ps-5  mb-5 pb-5">
 
         <?php
 
@@ -83,87 +90,81 @@ require "mostrarPokemon.php";
             <?php
         }
 
-        ?>
 
+        ?>
+        <!-- Pokemones lista contenedor-->
         <div class="d-flex flex-row flex-wrap justify-content-center">
             <?php
             /*recorre fila por fila para traer todos los datos de cada pokemon */
             while ($fila = mysqli_fetch_array($result)) {
 
-                /*buscamos coincidencia entre el nombre del pokemon y el nombre de la imagen */
-                foreach ($ficheros1 as $img) {
-                    if ($img == $fila['imagen']) {
-                        $imgMostrar = $directorio . $img;
-                    }
+            /*buscamos coincidencia entre el nombre del pokemon y el nombre de la imagen */
+            foreach ($ficheros1 as $img) {
+                if ($img == $fila['imagen']) {
+                    $imgMostrar = $directorio . $img;
                 }
+            }
 
 
-                /*buscamos coincidencia entre el tipo de pokemon y el tipo de la imagen */
-                foreach ($ficheros2 as $img2) {
+            /*buscamos coincidencia entre el tipo de pokemon y el tipo de la imagen */
+            foreach ($ficheros2 as $img2) {
 
-                    $extension = explode(".", $img2);
-                    $nuevaExtension = substr($fila['tipo'], 0, -1);
-                    $tipoFinal = $nuevaExtension . "." . $extension[1];
+                $tipo = $fila['tipo'];
+                $extension = explode(".", $img2);
+                $nuevaExtension = substr($fila['tipo'], 0, -1);
+                $tipoFinal = $nuevaExtension . "." . $extension[1];
 
-                    if ($img2 == $tipoFinal) {
-                        $imgMostrar2 = $directorio2 . $img2;
-                    }
+                if ($img2 == $tipoFinal) {
+                    $imgMostrar2 = $directorio2 . $img2;
                 }
+            }
+
+            if (!isset($_POST["busqueda"])) {
 
                 ?>
 
-                <!-- <div class="col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">-->
-                <div href="#"
-                     class="text-decoration-none bg-light border me-md-4 me-lg-4 me-xl-4 border-2 rounded text-dark col-12 col-sm-6 col-md-5 col-lg-3 row px-1 me-2 mt-3 align-content-center">
-                    <?php ?>
-                    <div class="col-6 p-0 ">
-                        <img src="<?php echo $imgMostrar ?>" class="w-100 border-end border-2"
-                             style="max-height: 155px;" alt="">
-                    </div>
-                    <div class="col-6 p-2">
-                        <h6 class="card-title mb-3"><?php echo $fila["id"] ?># <?php echo($fila["nombre"]) ?></h6>
-                        <div class="d-block d-flex flex-column">
-                            <img class="col-4 mb-3" src="<?php echo $imgMostrar2 ?>" alt="">
-                            <?php
+                <!-- Pokemones lista -->
 
-                            $id = $fila["id"];
-                            $nombre = $fila["nombre"];
-                            $descripcion = $fila["descripcion"];
-                            $tipo = $fila["tipo"];
-                            $imagen = $fila["imagen"];
-                            if (isset($_SESSION["nombre"])) {
-                                if (isset($id))
-                                    echo "<a href='borrarPokemon.php?id=$id' class='bg-danger col-6 text-decoration-none text-light rounded text-center'>Eliminar</a>";
-
-                                /* data-bs-toggle='modal' data-bs-target='#editarPokemon'*/
-
-                                echo "<a href='editarPokemon.php?id=$id&nombre=$nombre&descripcion=$descripcion&tipo=$tipo&imagen=$imagen' data-bs-target='#editarPokemon' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
-
-                                /*echo "<a data-bs-toggle='modal' data-bs-target='#editarPokemon' href='editarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";*/
-                            }
-                            ?>
-                        </div>
-                        <?php
-                        if (isset($_SESSION["usuario"])) { ?>
-                            <div class="d-block">
-                                <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i>
-                                </button>
-                            </div>
-                            <?php
-                        }
-                        ?>
-                    </div>
-                </div>
-                <!--</div>-->
                 <?php
+                pokemonCarta($fila["id"], $fila["nombre"], $imgMostrar, $imgMostrar2, $fila["descripcion"], $fila["tipo"]);
+            }
+            if (isset($_POST["busqueda"])) {
+
+
+                if ($_POST["busqueda"] == $fila["nombre"] || $_POST["busqueda"] == $fila["tipo"] || $_POST["busqueda"] == $fila["id"]) {
+
+                    echo pokemonCarta($fila["id"], $fila["nombre"], $imgMostrar, $imgMostrar2, $fila["descripcion"], $fila["tipo"]);
+
+                }
             }
             ?>
-
-
         </div>
+
+
+        <?php
+        if (isset($_SESSION["usuario"])) { ?>
+            <div class="d-block">
+                <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i>
+                </button>
+            </div>
+            <?php
+        }
+        ?>
     </div>
 </div>
+<!--</div>-->
+<?php
+}
+?>
+
+
+</div>
+</div>
+
+<!-- Final contenedor agregar pokemones y lista de pokemones) -->
+
+<!-- Final contenedor principal (El div de arriba) -->
 
 <!-- Modal crear pokemon-->
 <div class="modal fade" id="crearPokemon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
