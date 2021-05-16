@@ -38,7 +38,7 @@ require "mostrarPokemon.php";
 
             <div class="collapse navbar-collapse w-100" id="ContentFilter">
 
-                <fom class="row w-100 p-2">
+                <form class="row w-100 p-2">
                     <div class="col-10 mb-2">
                         <input class="form-control me-2" type="search" placeholder="Buscar por nombre"
                                aria-label="Search">
@@ -63,7 +63,7 @@ require "mostrarPokemon.php";
                         <label class="form-check-label" for="inlineCheckbox4">electrico</label>
                     </div>
 
-                </fom>
+                </form>
                 <div>
                 </div>
             </div>

@@ -96,6 +96,9 @@ require "mostrarPokemon.php";
         <div class="d-flex flex-row flex-wrap justify-content-center">
             <?php
             /*recorre fila por fila para traer todos los datos de cada pokemon */
+
+            $arrayBusqueda = [];
+            $i = 1;
             while ($fila = mysqli_fetch_array($result)) {
 
             /*buscamos coincidencia entre el nombre del pokemon y el nombre de la imagen */
@@ -119,6 +122,7 @@ require "mostrarPokemon.php";
                 }
             }
 
+
             if (!isset($_POST["busqueda"])) {
 
                 ?>
@@ -127,14 +131,17 @@ require "mostrarPokemon.php";
 
                 <?php
                 pokemonCarta($fila["id"], $fila["nombre"], $imgMostrar, $imgMostrar2, $fila["descripcion"], $fila["tipo"]);
+                array_push($arrayBusqueda, $i++);
+
             }
             if (isset($_POST["busqueda"])) {
 
 
                 if ($_POST["busqueda"] == $fila["nombre"] || $_POST["busqueda"] == $fila["tipo"] || $_POST["busqueda"] == $fila["id"]) {
 
-                    echo pokemonCarta($fila["id"], $fila["nombre"], $imgMostrar, $imgMostrar2, $fila["descripcion"], $fila["tipo"]);
+                    pokemonCarta($fila["id"], $fila["nombre"], $imgMostrar, $imgMostrar2, $fila["descripcion"], $fila["tipo"]);
 
+                    array_push($arrayBusqueda, $fila["id"]);
                 }
             }
             ?>
@@ -154,12 +161,21 @@ require "mostrarPokemon.php";
     </div>
 </div>
 <!--</div>-->
+
 <?php
 }
+
+
+if (count($arrayBusqueda) < 1) {
+    echo "<h4>No se encontraron pokemones</h4>";
+
+}
+
 ?>
 
 
 </div>
+
 </div>
 
 <!-- Final contenedor agregar pokemones y lista de pokemones) -->
