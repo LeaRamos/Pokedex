@@ -65,36 +65,28 @@ require "mostrarPokemon.php";
               <?php
               require 'buscarPokemon.php';
               if(isset($_POST['buscar'])){
-                  $nombre=$_POST['nombre'];
-                $sdsad=buscarPorNombre($nombre);
-
-                var_dump($sdsad[4]);
-
+                $nombre= $_POST['nombre'];
+                $_SESSION["infoPokemon"] = buscarPorNombre($nombre);
               }
-
-
               ?>
+              
 
-
-
-              <a href="#" class="text-decoration-none text-dark col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">
-                  <?php    ?>
-                  <div class="col-6 p-0 ">
-                      <img src="<?php echo getImagen(buscarPorNombre($nombre)); ?>" class="w-100" style="max-height: 155px;" alt="">
-                  </div>
+              <a href="mostrarInformacion.php" class="text-decoration-none text-danger col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">
+                <div class="col-12 p-0 ">
                   <div class="col-6 p-2">
-                      <h6 class="card-title mb-3"><?php
-
-                          if($nombre !== null){
-                              echo getNombre(buscarPorNombre($nombre));
-                          }
-
-                          ?></h6>
-                      <div class="d-block">
-                         <!-- <img src="<?php echo $imgMostrar2?>" alt="">-->
-                      </div>
-
-                  </div></a>
+                    <h6 class="card-title text-center mb-3">
+                        <?php
+                        if(isset($nombre))
+                        {
+                            echo getNombre(buscarPorNombre($nombre));
+                        }
+                        ?>
+                    </h6>
+                    <img src="<?php echo getImagen(buscarPorNombre($nombre)); ?>" class="w-100" style="max-height: 155px;" alt="">
+                  </div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -413,6 +405,7 @@ require "mostrarPokemon.php";
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
   </script>
+  
 </body>
 
 </html>
