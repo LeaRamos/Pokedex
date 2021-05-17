@@ -19,3 +19,6 @@ primary key(id)
 
 INSERT INTO Usuario (nombre,pass) 
 		VALUES('temple','1234');
+
+INSERT INTO Pokemon (id,nombre,descripcion,tipo)
+		VALUES(5,poro,'mucho poro','planta', NULL);

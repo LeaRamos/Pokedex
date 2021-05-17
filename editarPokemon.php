@@ -38,7 +38,7 @@ require "mostrarPokemon.php";
 
             <div class="collapse navbar-collapse w-100" id="ContentFilter">
 
-                <fom action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post"  class="row w-100 p-2">
+                <fom class="row w-100 p-2">
                     <div class="col-10 mb-2">
                         <input class="form-control me-2" type="search" placeholder="Buscar por nombre"
                                aria-label="Search">
@@ -62,14 +62,19 @@ require "mostrarPokemon.php";
                         <input class="form-check-input ms-0 me-1" type="checkbox" id="inlineCheckbox4" value="option4">
                         <label class="form-check-label" for="inlineCheckbox4">electrico</label>
                     </div>
+
                 </fom>
                 <div>
                 </div>
             </div>
         </div>
     </div>
+
+
     <div class=" contenedorPrincipal  container-fluid ps-5  mb-5 pb-5">
+
         <?php
+
         if (isset($_SESSION["nombre"])) { ?>
             <div class="d-grid gap-2 col-6 mx-auto mt-5 ">
                 <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#crearPokemon">
@@ -79,80 +84,124 @@ require "mostrarPokemon.php";
         }
 
         ?>
+
         <div class="d-flex flex-row flex-wrap justify-content-center">
             <?php
+
+
+            $idParametro = $_GET["id"];
+
+            $sql3 = "SELECT * FROM Pokemon where id = '$idParametro'";
+            $resultado = $conexion->query($sql3);
+
+
             /*recorre fila por fila para traer todos los datos de cada pokemon */
-            while ($fila = mysqli_fetch_array($result)) {
+            while ($fila = mysqli_fetch_array($resultado)) {
 
-                /*buscamos coincidencia entre el nombre del pokemon y el nombre de la imagen */
-                foreach ($ficheros1 as $img) {
-                    $extencionImg = explode( "." , $img);
-                   
-                    if ($extencionImg[0] == ucfirst($fila['nombre']) ) {
-                        $imgMostrar = $directorio . $img;
-                    }
+            /*buscamos coincidencia entre el nombre del pokemon y el nombre de la imagen */
+            foreach ($ficheros1 as $img) {
+                $extencionImg = explode( "." , $img);
+               
+                if ($extencionImg[0] == ucfirst($fila['nombre']) ) {
+                    $imgMostrar = $directorio . $img;
                 }
-                /*buscamos coincidencia entre el tipo de pokemon y el tipo de la imagen */
+            }
+
+
+            /*buscamos coincidencia entre el tipo de pokemon y el tipo de la imagen */
+            foreach ($ficheros2 as $img2) {
+
                 foreach ($ficheros2 as $img2) {
-                     $extension= explode(".", $img2);  
-                    if($extension[0] == $fila['tipo']){
-                     $imgMostrar2 = $directorio2 . $img2;
-                    }
-                }
+                    $extension= explode(".", $img2);  
+                   if($extension[0] == $fila['tipo']){
+                    $imgMostrar2 = $directorio2 . $img2;
+                   }
+            }
+        }
+            ?>
 
-                ?>
+            <div href="#"
+                 class="text-decoration-none bg-light border me-md-4 me-lg-4 me-xl-4 border-2 rounded text-dark col-12 col-sm-6 col-md-5 col-lg-4 row px-1 me-2 mt-3 align-content-center">
 
-                <!-- <div class="col-12 col-sm-6 col-lg-4  border-danger row px-1  me-2 mt-3 align-content-center">-->
-                <div href="#"
-                     class="text-decoration-none bg-light border me-md-4 me-lg-4 me-xl-4 border-2 rounded text-dark col-12 col-sm-6 col-md-5 col-lg-3 row px-1 me-2 mt-3 align-content-center">
-                    <?php ?>
-                    <div class="col-6 p-0 ">
-                        <img src="<?php echo $imgMostrar ?>" class="w-100 border-end border-2"
-                             style="max-height: 155px;" alt="">
-                    </div>
-                    <div class="col-6 p-2">
+                <div class="col-5 p-0 ">
+                    <img src="<?php echo $imgMostrar ?>" class="w-100 border-end border-2"
+                         style="max-height: 155px;" alt="">
+                </div>
+
+                <div class="col-6 p-2 d-flex flex-column">
+
+                    <div class="d-flex flex-row">
+
                         <h6 class="card-title mb-3"><?php echo $fila["id"] ?># <?php echo($fila["nombre"]) ?></h6>
-                        <div class="d-block d-flex flex-column">
-                            <img class="col-4 mb-3" src="<?php echo $imgMostrar2 ?>" alt="">
+                        <img class="col-3 ms-2 mb-3" src="<?php echo $imgMostrar2 ?>" alt="">
+
+                    </div>
+
+                    <div class="d-flex flex-column">
+
+                        <div>Que desea modificar?</div>
+
+                        <div class="d-flex flex-row flex-wrap">
+
                             <?php
 
                             $id = $fila["id"];
-                            $nombre = $fila["nombre"];
-                            $descripcion = $fila["descripcion"];
-                            $tipo = $fila["tipo"];
-                            $imagen = $fila["imagen"];
                             if (isset($_SESSION["nombre"])) {
+
                                 if (isset($id))
-                                    echo "<a href='borrarPokemon.php?id=$id' class='bg-danger col-6 text-decoration-none text-light rounded text-center'>Eliminar</a>";
 
-                                /* data-bs-toggle='modal' data-bs-target='#editarPokemon'*/
 
-                                echo "<a href='editarPokemon.php?id=$id&nombre=$nombre&descripcion=$descripcion&tipo=$tipo&imagen=$imagen' data-bs-target='#editarPokemon' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";
+                                    /* data-bs-target='#editarPokemon'*/
+
+
+                                    echo "<a data-bs-toggle='modal' data-bs-target='#edicionNombre' class='bg-dark ms-1 col-4 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Nombre</a>";
+                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionTipo' class='bg-dark ms-1 col-3 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Tipo</a>";
+                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionDescripción' class='bg-dark col-4 ms-1 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Desc</a>";
+                                echo "<a data-bs-toggle='modal' data-bs-target='#edicionImagen' class='bg-dark ms-1 col-4 mt-1 text-decoration-none text-light bg-dark rounded text-center '>Imágen</a>";
+                                echo "<a href='borrarPokemon.php?id=$id' class='text-decoration-none px-1 text-light bg-danger ms-1 col-4 mt-1 rounded text-center'>Eliminar</a>";
+
+                                include "modalEdicion.php";
+
 
                                 /*echo "<a data-bs-toggle='modal' data-bs-target='#editarPokemon' href='editarPokemon.php?id=$id' class='bg-dark col-6 text-decoration-none text-light bg-dark rounded text-center mt-2'>Editar</a>";*/
                             }
+
                             ?>
+
                         </div>
-                        <?php
-                        if (isset($_SESSION["usuario"])) { ?>
-                            <div class="d-block">
-                                <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
-                                <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i>
-                                </button>
-                            </div>
-                            <?php
-                        }
-                        ?>
+
+                        <div>
+
+                        </div>
+
+
                     </div>
+
                 </div>
-                <!--</div>-->
+
+            </div>
+
+            <?php
+            if (isset($_SESSION["usuario"])) { ?>
+                <div class="d-block">
+                    <button type="button" class="btn btn-warning mt-4"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger mt-4"><i class="fas fa-trash-alt "></i>
+                    </button>
+                </div>
                 <?php
             }
             ?>
-
-
         </div>
     </div>
+
+<?php
+}
+?>
+
+
+</div>
+
+</div>
 </div>
 
 <!-- Modal crear pokemon-->
@@ -177,7 +226,7 @@ require "mostrarPokemon.php";
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="tipo" id="hierba" value="planta">
+                        <input class="form-check-input" type="radio" name="tipo" id="acero" value="planta">
                         <label class="form-check-label" for="inlineCheckbox1">Hierba</label>
                     </div>
                     <div class="form-check form-check-inline">
