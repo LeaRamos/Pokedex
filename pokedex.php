@@ -26,7 +26,7 @@ require "mostrarPokemon.php";
 
     <div class="contenedorPrincipal  container-fluid d-flex flex-column justify-content-center navbar navbar-expand-sm">
 
-        <p class="fw-bold">Todos los pokemones disponible para que eligas</p>
+        <p class="fw-bold">Todos los pokemones disponible para que eligasssssss</p>
         <div class=" d-flex justify-content-start col-12 flex-column">
             <button class="navbar-toggler text-dark col-2 justify-content-start mb-2" type="button"
                     data-bs-toggle="collapse" data-bs-target="#ContentFilter" aria-expanded="false"
