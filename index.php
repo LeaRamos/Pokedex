@@ -13,7 +13,7 @@ require "conexion.php";
     <link href="recursos/scss/custom.css" rel="stylesheet">
     <link rel="stylesheet" href="recursos/css/style.css">
     <link rel="stylesheet" href="recursos/css/pokedex.css">
-    <title>PoKedex</title>
+    <title>PoKedezzzzzzzx</title>
 </head>
 
 <body class="container-fluid p-0 d-flex justify-content-lg-center">
